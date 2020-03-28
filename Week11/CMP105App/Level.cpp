@@ -19,7 +19,10 @@ Level::~Level()
 // handle user input
 void Level::handleInput(float dt)
 {
-
+	if (input->isKeyDown(sf::Keyboard::Escape))
+	{
+		gameState->setCurrentState(State::MENU);
+	}
 }
 
 // Update game objects
