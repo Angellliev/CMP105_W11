@@ -10,6 +10,13 @@ Level::Level(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud
 	player.setInput(input);
 	// initialise game objects
 	audio->addMusic("sfx/cantina.ogg", "cantina");
+	audio->addSound("sfx/Glass_Break.ogg", "Grass Break");
+	buffer.loadFromFile("sfx/Glass_Break.ogg");
+	sound.setBuffer(buffer);
+	
+	music.openFromFile("sfx/cantina.ogg");
+	//music.play();
+	musicPlayed = false;
 }
 
 Level::~Level()
@@ -22,19 +29,32 @@ void Level::handleInput(float dt)
 {
 	if (input->isKeyDown(sf::Keyboard::Escape))
 	{
+		music.stop();
 		gameState->setCurrentState(State::MENU);
 		player.setPosition(0, 0);
 		player.setVelocity(0, 0);
+		musicPlayed = false;
 	}
 	else if (input->isKeyDown(sf::Keyboard::P))
 	{
+		music.pause();
 		gameState->setCurrentState(State::PAUSE);
+		musicPlayed = false;
+	}
+	if (input->isKeyDown(sf::Keyboard::Num1))
+	{
+		sound.play();
 	}
 }
 
 // Update game objects
 void Level::update(float dt)
 {
+	if (!musicPlayed)
+	{
+		music.play();
+		musicPlayed = true;
+	}
 	player.update(dt, window);
 }
 

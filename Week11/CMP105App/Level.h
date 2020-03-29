@@ -23,10 +23,14 @@ private:
 	void beginDraw();
 	void endDraw();
 
+	bool musicPlayed;
 	// Default variables for level class.
 	sf::RenderWindow* window;
 	Input* input;
 	GameState* gameState;
 	AudioManager* audio;
+	sf::Sound sound;
+	sf::SoundBuffer buffer;
+	sf::Music music;
 	Player player;
 };
