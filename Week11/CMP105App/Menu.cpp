@@ -10,7 +10,7 @@ Menu::Menu(sf::RenderWindow* hwnd, Input* in, GameState* gs, AudioManager* aud)
 	text.setPosition(window->getSize().x / 3, 10);
 	text.setCharacterSize(40);
 	text.setFont(font);
-	text.setString("Press 'P' to play");
+	text.setString("Press 'Shift' to play");
 
 }
 
@@ -21,7 +21,7 @@ void Menu::startGame()
 
 void Menu::handleInput()
 {
-	if (input->isKeyDown(sf::Keyboard::P))
+	if (input->isKeyDown(sf::Keyboard::LShift))
 	{
 		startGame();
 	}

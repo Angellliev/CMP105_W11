@@ -4,6 +4,7 @@
 #include "Framework/Input.h"
 #include "Framework/AudioManager.h"
 #include "Framework/GameState.h"
+#include "Player.h"
 #include <string>
 #include <iostream>
 
@@ -27,4 +28,5 @@ private:
 	Input* input;
 	GameState* gameState;
 	AudioManager* audio;
+	Player player;
 };
